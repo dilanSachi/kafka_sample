@@ -99,10 +99,10 @@ service on kafkaListener {
             where 'order.paymentStatus == SUCCESS
             do {
                 log:printInfo("SUCCESS orders: " + orders.toString());
-                // check self.orderProducer->send({
-                //     topic: paymentSuccessOrders,
-                //     value: 'order
-                // });
+                check self.orderProducer->send({
+                    topic: paymentSuccessOrders,
+                    value: 'order
+                });
             };
     }
 }
