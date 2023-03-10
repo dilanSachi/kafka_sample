@@ -1,14 +1,26 @@
 import ballerinax/kafka;
 import ballerina/log;
+import ballerina/os;
 import ballerina/time;
 
-configurable string groupId = "order-consumers-" + time:utcNow().toString();
-configurable string orders = "orders";
-configurable string paymentSuccessOrders = "payment-success-orders";
-configurable decimal pollingInterval = 1;
-configurable string kafkaEndpoint = ?;
-configurable string username = ?;
-configurable string password = ?;
+// configurable string groupId = "order-consumers-" + time:utcNow().toString();
+// configurable string orders = "orders";
+// configurable string paymentSuccessOrders = "payment-success-orders";
+// configurable decimal pollingInterval = 1;
+// configurable string kafkaEndpoint = ?;
+// configurable string username = ?;
+// configurable string password = ?;
+
+
+string groupId = "order-consumers-" + time:utcNow().toString();
+string orders = "orders";
+string paymentSuccessOrders = "payment-success-orders";
+decimal pollingInterval = 1;
+string kafkaEndpoint = os:getEnv("endpoint");
+string username = os:getEnv("username");
+string password = os:getEnv("password");
+
+
 //configurable string kafkaEndpoint = "2.tcp.ngrok.io:14890";
 
 // public type Order readonly & record {|
